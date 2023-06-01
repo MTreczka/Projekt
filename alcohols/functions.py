@@ -78,12 +78,3 @@ def fill_wine():
         alcohol=chardonnay,
         defaults={'dryness': 'Półsłodkie', 'color': 'Białe'}
     )
-
-
-    # Wine.objects.get_or_create(
-    #     alcohol_id=Alcohol.objects.get_or_create,
-    #     dryness='Wytrawne',
-    #     color='Białe'
-    # )
-
-    # Pozostałe rekordy...

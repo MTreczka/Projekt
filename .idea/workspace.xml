@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e9c719d-c0d8-4154-9885-0e052e43dc81" name="Changes" comment="" />
+    <list default="true" id="2e9c719d-c0d8-4154-9885-0e052e43dc81" name="Changes" comment="Projekt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +20,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2Q8kEUoU8A9NgNZwlgjNOkn29ny" />
   <component name="ProjectViewState">
@@ -91,12 +94,24 @@
       <workItem from="1684742504134" duration="3301000" />
       <workItem from="1685077948924" duration="22269000" />
       <workItem from="1685565072330" duration="13117000" />
-      <workItem from="1685610348044" duration="12877000" />
+      <workItem from="1685610348044" duration="13224000" />
     </task>
+    <task id="LOCAL-00001" summary="Projekta">
+      <created>1685623860872</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685623860872</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Projekt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Projekt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
