@@ -1,0 +1,11 @@
+{% extends "_base_.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+        <tbody class="text-color-lighter">
+    <table class="schedules-content"><td><h1>Ulubione alkohole:</h1><h5>
+        {% for alcohol in favorite_alcohols %}
+            <li>{{ alcohol.name }}</li>
+        {% empty %}
+            <li>No favorite alcohols.</li>
+        {% endfor %}</h5>
+{% endblock %}

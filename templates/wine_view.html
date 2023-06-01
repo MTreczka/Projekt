@@ -1,0 +1,50 @@
+{% extends "_base_.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <table class="table border-bottom schedules-content">
+        <thead>
+        <tr class="d-flex text-color-darker">
+            <th scope="col" class="col-1">ID</th>
+            <th scope="col" class="col-2">NAZWA</th>
+            <th scope="col" class="col-7">OPIS</th>
+            <th scope="col" class="col-2 center">AKCJE</th>
+        </tr>
+        </thead>
+        <tbody class="text-color-lighter">
+        {% for wine in wines %}
+            <tr class="d-flex">
+                <th scope="row" class="col-1">{{ wine.alcohol_id }}</th>
+                <td class="col-2">
+                    {{ wine.alcohol.name }} ({{ wine.alcohol.votes }} głosy)
+                </td>
+                <td class="col-7">{{ wine.alcohol.desc }}
+                    <a>{{ wine.dryness }} {{ wine.color }}</a></td>
+                <td class="col-2 d-flex align-items-center justify-content-center flex-wrap">
+                    <a href="{% url 'alcohol-detail' wine.alcohol_id %}" class="btn btn-info rounded-0 text-light m-1">Szczegóły</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_paginated %}
+        <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo; poprzednia </a></li>
+        {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+            {% if page_obj.number == i %}
+                <li class="active"><span>| {{ i }} |<span class="sr-only">(current)</span></span></li>
+            {% else %}
+                <li><a href="?page={{ i }}">| {{ i }} |</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">&raquo; nastepna</a></li>
+        {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    {% endif %}
+{% endblock %}

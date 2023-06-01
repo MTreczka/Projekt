@@ -1,0 +1,96 @@
+{% extends "_base_.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+    <div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+        <div class="mt-4 ml-4 mr-4">
+            <div class="row border-bottom border-3">
+                <div class="col"><h3 class="color-header text-uppercase">Szczegóły
+                    produktu</h3></div>
+                <div class="col d-flex justify-content-end mb-2"><a
+                        href="{% url 'list-view' %}"
+                        class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4">Powrót</a>
+                </div>
+            </div>
+
+            <table class="table borderless">
+                <tbody>
+                <tr class="d-flex">
+                    <th scope="row" class="col-2">Rodzaj</th>
+                    <td class="col-7">
+                        <h4><b>{{ alcohol.type.name }}</b><h4>
+                    </td>
+                </tr>
+                <tr class="d-flex">
+                    <th scope="row" class="col-2">Nazwa Przepisu</th>
+                    <td class="col-7">
+                        {{ alcohol.name }}
+                    </td>
+                </tr>
+                <tr class="d-flex">
+                    <th scope="row" class="col-2">Liczba polubień</th>
+                    <td class="col-7">
+                        {{ alcohol.votes }}
+                    </td>
+                </tr>
+                <tr class="d-flex">
+                    <td class="col-7">
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" name="voteUp" class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4">
+                                Polub produkt
+                            </button>
+                            <button type="submit" name="voteDown" class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4">
+                                Nie lubię produktu
+                            </button>
+                        </form>
+                        {% if request.user.is_authenticated %}
+                        {% if is_favorited %}
+                            <form method="post" action="{% url 'alcohol-detail' pk=alcohol.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4" name="remove_from_favorites">Usuń z ulubionych</button>
+                            </form>
+                        {% else %}
+                            <form method="post" action="{% url 'alcohol-detail' pk=alcohol.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4" name="add_to_favorites">Dodaj do ulubionych</button>
+                            </form>
+                        {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr class="d-flex">
+
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="row d-flex">
+                <div class="col-5 p-4">
+                    <p>{{ alcohol.desc }}</p>
+                </div>
+                <div class="col-2"></div>
+            </div>
+            <h2>Komentarze:</h2>
+            <ul>
+                {% for comment in alcohol.comment_set.all %}
+                    <li>{{ comment.date }}
+                        <p>{{ comment.content }}</p>
+                        {{ comment.user.username }} </li>
+                {% empty %}
+                    <li>Brak komentarzy.</li>
+
+                {% endfor %}
+                {% if request.user.is_authenticated %}
+                    <form method="post" action="{% url 'add-comment' pk=alcohol.pk %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Dodaj komentarz</button>
+                    </form>
+                {% endif %}
+
+                </a>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
