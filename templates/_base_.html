@@ -41,14 +41,12 @@
     <div class="row dashboard-nowrap">
         <ul class="nav flex-column long-bg">
             <li class="nav-item">
-                <span>Pulpit</span>
-                </a>
             </li>
 
-            <li class="nav"><a href="{% url 'index' %}">index</a></li>
-            <li class="nav"><a href="{% url 'list-view' %}">Ranking alkoholi</a></li>
-            <li class="nav"><a href="{% url 'wines-view' %}">Wina</a></li>
-            <li class="nav"><a href="{% url 'fav' %}">Ulubione</a></li>
+            <li class="nav"><a class="btn-color" href="{% url 'index' %}">index</a></li>
+            <li class="nav"><a class="btn-color" href="{% url 'list-view' %}">Ranking alkoholi</a></li>
+            <li class="nav"><a class="btn-color" href="{% url 'wines-view' %}">Wina</a></li>
+            <li class="nav"><a class="btn-color" href="{% url 'fav' %}">Ulubione</a></li>
         </ul>
 
         <div class="m-4 p-3 width-medium text-color-darker">
